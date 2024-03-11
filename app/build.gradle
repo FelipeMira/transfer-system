@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+ext {
+    lombokVersion = '1.18.22'
+    springFrameworkVersion = '5.3.13'
+    springBootStarterValidationVersion = '2.6.1'
+    junitVersion = '5.9.1'
+    junitSuiteVersion = '1.8.0'
+    jakartaValidationVersion = '3.0.2'
+    jakartaInjectVersion = '2.0.1'
+    jakartaElVersion = '4.0.0'
+    glassfishElVersion = '4.0.2'
+    hibernateValidationVersion = '7.0.1.Final'
+    mockitoVersion = '3.12.4'
+    powerMockVersion = '2.0.9'
+}
+
+subprojects {
+
+    group = 'br.com.felipemira'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    compileJava {
+        sourceCompatibility = 17
+        targetCompatibility = 17
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: "${rootProject.ext.jakartaValidationVersion}"
+        implementation group: 'jakarta.inject', name: 'jakarta.inject-api', version: "${rootProject.ext.jakartaInjectVersion}"
+        implementation group: 'org.springframework', name: 'spring-context', version: "${rootProject.ext.springFrameworkVersion}"
+        implementation group: 'org.springframework', name: 'spring-tx', version: "${rootProject.ext.springFrameworkVersion}"
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: "${rootProject.ext.springBootStarterValidationVersion}"
+
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: "${rootProject.ext.junitVersion}"
+        testImplementation group: 'org.junit.platform', name: 'junit-platform-commons', version: "${rootProject.ext.junitSuiteVersion}"
+        testImplementation group: 'org.junit.platform', name: 'junit-platform-suite-engine', version: "${rootProject.ext.junitSuiteVersion}"
+        testImplementation ('org.springframework:spring-test:' + "${rootProject.ext.springFrameworkVersion}") {
+            exclude group: 'junit', module: 'org.junit.vintage'
+        }
+        testImplementation group: 'org.mockito', name: 'mockito-core', version: "${rootProject.ext.mockitoVersion}"
+
+        testImplementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: "${rootProject.ext.hibernateValidationVersion}"
+
+        // Jakarta Expression Language API
+        testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: "${rootProject.ext.jakartaElVersion}"
+
+        // Implementation of Jakarta Expression Language
+        testImplementation group: 'org.glassfish', name:'jakarta.el', version: "${rootProject.ext.glassfishElVersion}"
+        testImplementation group: 'org.hibernate.validator', name:'hibernate-validator', version: "${rootProject.ext.hibernateValidationVersion}"
+    }
+
+}
