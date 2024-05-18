@@ -1,10 +1,10 @@
 package br.com.felipemira.transfer.usecase;
 
-import br.com.felipemira.transfer.system.domain.model.Account;
-import br.com.felipemira.transfer.system.domain.model.AccountHolder;
-import br.com.felipemira.transfer.system.domain.model.Transfer;
-import br.com.felipemira.transfer.system.exceptions.BusinessException;
-import br.com.felipemira.transfer.system.ports.in.TransferUseCase;
+import br.com.felipemira.transfer.application.domain.model.Account;
+import br.com.felipemira.transfer.application.domain.model.AccountHolder;
+import br.com.felipemira.transfer.application.domain.model.Transfer;
+import br.com.felipemira.transfer.application.exceptions.BusinessException;
+import br.com.felipemira.transfer.application.ports.in.TransferUseCase;
 import br.com.felipemira.transfer.usecase.builds.BuildOne;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.DisplayName;
@@ -23,8 +23,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(classes = BuildOne.class)
 public class TransferUseCaseTest {
 
-    Long accountCredit = 10L;
-    Long accountDebit = 20L;
     Long accountNonexistent = 40L;
     BigDecimal hundred = new BigDecimal(100);
     BigDecimal fifty = new BigDecimal(50);
@@ -39,12 +37,10 @@ public class TransferUseCaseTest {
             new TransferUseCase.TransferCommand(new Transfer(null, null, null));
             fail("Deve carregar uma conta nula.");
         } catch (ConstraintViolationException e) {
-            assertEquals("""
-                    transfer:\s
-                    One or more violations found:\s
-                    Debit account is required
-                    Credit account is required
-                    Value is required""", e.getMessage());
+            String errorMessage = e.getMessage();
+            assertTrue(errorMessage.contains("transfer.credit: deve ser informado"));
+            assertTrue(errorMessage.contains("transfer.debit: deve ser informado"));
+            assertTrue(errorMessage.contains("transfer.value: deve ser informado"));
         }
     }
 
@@ -57,9 +53,7 @@ public class TransferUseCaseTest {
             fail("Deve carregar uma conta de debito nula.");
         } catch (ConstraintViolationException e) {
             assertEquals("""
-                    transfer:\s
-                    One or more violations found:\s
-                    Debit account is required""", e.getMessage());
+                    transfer.debit: deve ser informado""", e.getMessage());
         }
     }
 
@@ -72,9 +66,7 @@ public class TransferUseCaseTest {
             fail("Deve carregar uma conta de credito nula.");
         } catch (ConstraintViolationException e) {
             assertEquals("""
-                    transfer:\s
-                    One or more violations found:\s
-                    Credit account is required""", e.getMessage());
+                    transfer.credit: deve ser informado""", e.getMessage());
         }
     }
 
@@ -88,9 +80,7 @@ public class TransferUseCaseTest {
             fail("Deve carregar um valor nulo.");
         } catch (ConstraintViolationException e) {
             assertEquals("""
-                    transfer:\s
-                    One or more violations found:\s
-                    Value is required""", e.getMessage());
+                    transfer.value: deve ser informado""", e.getMessage());
         }
     }
 
@@ -101,10 +91,9 @@ public class TransferUseCaseTest {
         Transfer transfer = new Transfer(accountDebit, accountDebit, fifty);
        var myThrow =  assertThrows(ConstraintViolationException.class, () -> port.transfer(new TransferUseCase.TransferCommand(transfer)));
 
-       assertTrue(myThrow.getMessage().contains("""
-               transfer:\s
-               One or more violations found:\s
-               Debit and credit accounts must be different"""));
+        String errorMessage = myThrow.getMessage();
+        assertTrue(errorMessage.contains("transfer.credit: nao deve ser igual a transfer.debit"));
+        assertTrue(errorMessage.contains("transfer.debit: nao deve ser igual a transfer.credit"));
     }
     @Test
     @DisplayName("Transferir com valor insuficiente")

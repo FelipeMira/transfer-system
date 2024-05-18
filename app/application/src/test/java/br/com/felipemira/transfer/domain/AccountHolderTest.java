@@ -1,6 +1,6 @@
 package br.com.felipemira.transfer.domain;
 
-import br.com.felipemira.transfer.system.domain.model.AccountHolder;
+import br.com.felipemira.transfer.application.domain.model.AccountHolder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

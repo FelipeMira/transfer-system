@@ -1,7 +1,7 @@
 package br.com.felipemira.transfer.exceptions;
 
-import br.com.felipemira.transfer.system.exceptions.BusinessException;
-import br.com.felipemira.transfer.system.exceptions.Error;
+import br.com.felipemira.transfer.application.exceptions.BusinessException;
+import br.com.felipemira.transfer.application.exceptions.Error;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

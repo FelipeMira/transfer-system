@@ -1,11 +1,11 @@
 package br.com.felipemira.transfer.usecase;
 
-import br.com.felipemira.transfer.system.domain.model.Account;
-import br.com.felipemira.transfer.system.exceptions.BusinessException;
-import br.com.felipemira.transfer.system.ports.in.AccountInfoUseCase;
-import br.com.felipemira.transfer.system.ports.in.AccountInfoUseCase.AccountCommand;
-import br.com.felipemira.transfer.system.ports.out.AccountPort;
-import br.com.felipemira.transfer.system.ports.out.RegisterPort;
+import br.com.felipemira.transfer.application.domain.model.Account;
+import br.com.felipemira.transfer.application.exceptions.BusinessException;
+import br.com.felipemira.transfer.application.ports.in.AccountInfoUseCase;
+import br.com.felipemira.transfer.application.ports.in.AccountInfoUseCase.AccountCommand;
+import br.com.felipemira.transfer.application.ports.out.AccountPort;
+import br.com.felipemira.transfer.application.ports.out.RegisterPort;
 import br.com.felipemira.transfer.usecase.builds.BuildOne;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

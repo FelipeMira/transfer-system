@@ -1,0 +1,25 @@
+spring:
+  sql.init.mode: always
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: Asd01020304
+    jdbcUrl: jdbc:sqlserver://localhost:1433;databaseName=hexagonalTransferencia;encrypt=false
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    generate-ddl: false
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: true
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          cadastro:
+            url: http://localhost:8081/api/cadastros/
+          bacen:
+            url: http://localhost:8082/api/bacen/transferencia/

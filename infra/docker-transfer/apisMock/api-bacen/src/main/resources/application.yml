@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+bucket4j:
+  enabled: true
+  filters:
+    - cache-name: buckets
+      url: .*
+      http-response-body: "{ \"status\": 429, \"error\": \"Too Many Requests\", \"message\": \"You have exhausted your API Request Quota\" }"
+      rate-limits:
+        - bandwidths:
+            - capacity: 2
+              time: 60
+              unit: seconds

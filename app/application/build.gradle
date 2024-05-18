@@ -10,14 +10,4 @@ dependencies {
 
     compileOnly "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
-
-
-}
-
-test {
-    useJUnitPlatform()
-
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
 }

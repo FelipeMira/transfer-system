@@ -1,4 +1,6 @@
 rootProject.name = 'transfer'
 include 'application'
 include 'common'
+include ':adapters:database'
+include 'configuration'
 

@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: default, prod
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      #Para as anotacoes @Table, @Column
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus
+  metrics:
+    distribution:
+      percentiles-histogram[http.server.requests]: true
+      percentiles:
+        http.server.requests: 0.50, 0.90, 0.95, 0.99
+      sla:
+        http.server.requests: 10ms, 100ms
+springdoc:
+  swagger-ui:
+    path: '/swagger-ui.html'
+  override-with-generic-response: false
+
+log4j:
+  rootLogger: WARN, A1

@@ -1,9 +1,9 @@
 package br.com.felipemira.transfer.validation;
 
-import br.com.felipemira.transfer.system.domain.model.Account;
-import br.com.felipemira.transfer.system.domain.model.AccountHolder;
-import br.com.felipemira.transfer.system.domain.model.Transfer;
-import br.com.felipemira.transfer.system.ports.in.TransferUseCase;
+import br.com.felipemira.transfer.application.domain.model.Account;
+import br.com.felipemira.transfer.application.domain.model.AccountHolder;
+import br.com.felipemira.transfer.application.domain.model.Transfer;
+import br.com.felipemira.transfer.application.ports.in.TransferUseCase;
 import br.com.felipemira.transfer.usecase.builds.BuildOne;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.DisplayName;
@@ -38,13 +38,23 @@ public class CustomTransferValidationTest {
     }
 
     @Test
-    @DisplayName("Deve retornar erro quando o valor for menor que zero")
-    void IshouldReturnErrorWhenValueLessZero() {
-        var myThrow =  assertThrows(ConstraintViolationException.class, () -> new TransferUseCase.TransferCommand(new Transfer(accountDebit, accountCredit, new BigDecimal(-1))));
+    @DisplayName("Deve retornar erro quando o valor for menor que zero e as contas forem nulas")
+    void shouldReturnErrorWhenValueLessZeroAndAccountsNull() {
+        var myThrow =  assertThrows(ConstraintViolationException.class, () -> new TransferUseCase.TransferCommand(new Transfer(null, null, new BigDecimal(-1))));
 
-        assertEquals("""
-                transfer:\s
-                One or more violations found:\s
-                Insufficient value""", myThrow.getMessage());
+        String errorMessage = myThrow.getMessage();
+        assertTrue(errorMessage.contains("transfer.credit: deve ser informado"));
+        assertTrue(errorMessage.contains("transfer.debit: deve ser informado"));
+        assertTrue(errorMessage.contains("transfer.value: deve ser maior que zero"));
+    }
+
+    @Test
+    @DisplayName("Deve retornar erro quando as contas de debito e credito forem iguais")
+    void shouldReturnErrorWhenEqualsAccountDebitAndCredit() {
+        var myThrow =  assertThrows(ConstraintViolationException.class, () -> new TransferUseCase.TransferCommand(new Transfer(accountDebit, accountDebit, new BigDecimal(1))));
+
+        String errorMessage = myThrow.getMessage();
+        assertTrue(errorMessage.contains("transfer.credit: nao deve ser igual a transfer.debit"));
+        assertTrue(errorMessage.contains("transfer.debit: nao deve ser igual a transfer.credit"));
     }
 }
