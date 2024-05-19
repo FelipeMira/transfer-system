@@ -39,13 +39,13 @@ public class TransferService implements TransferUseCase {
             inactive(debit.getNumber());
         }
 
-        var debitAccountHolder = registerPort.getAccountHolder(debit.getAccountHolder().getIdAccountHolder());
+        var debitAccountHolder = registerPort.getAccountHolder(debit.getAccountMain().getIdAccount());
 
         if(isNull(debitAccountHolder)){
-            accountHolderNonexistent(debit.getAccountHolder().getIdAccountHolder());
+            accountHolderNonexistent(debit.getAccountMain().getIdAccount());
         }
 
-        debit.setAccountHolder(debitAccountHolder);
+        debit.setAccountMain(debitAccountHolder);
 
         var credit = accountPort.getAccount(transferCommand.transfer().getCredit().getNumber());
 
@@ -53,13 +53,13 @@ public class TransferService implements TransferUseCase {
             inactive(credit.getNumber());
         }
 
-        var creditAccountHolder = registerPort.getAccountHolder(credit.getAccountHolder().getIdAccountHolder());
+        var creditAccountHolder = registerPort.getAccountHolder(credit.getAccountMain().getIdAccount());
 
         if(isNull(creditAccountHolder)){
-            accountHolderNonexistent(credit.getAccountHolder().getIdAccountHolder());
+            accountHolderNonexistent(credit.getAccountMain().getIdAccount());
         }
 
-        credit.setAccountHolder(creditAccountHolder);
+        credit.setAccountMain(creditAccountHolder);
 
         //3. validacao limite diario
         debit.dateVerify();

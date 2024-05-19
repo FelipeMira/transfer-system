@@ -37,7 +37,7 @@ public class AccountEntity implements Serializable {
     private BigDecimal balance;
 
     @Embedded
-    private HolderEntity accountHolder;
+    private AbstractMainEntity mainEntity;
 
     @Column(name = "ativa")
     private Integer active;

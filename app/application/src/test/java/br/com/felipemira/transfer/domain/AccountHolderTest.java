@@ -1,5 +1,6 @@
 package br.com.felipemira.transfer.domain;
 
+import br.com.felipemira.transfer.application.domain.model.AbstractAccountMain;
 import br.com.felipemira.transfer.application.domain.model.AccountHolder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,8 +22,8 @@ class AccountHolderTest {
     @DisplayName("Deve definir o ID do titular da conta")
     void shouldSetIdAccountHolder() {
         Long expectedId = 1L;
-        accountHolder.setIdAccountHolder(expectedId);
-        assertEquals(expectedId, accountHolder.getIdAccountHolder());
+        accountHolder.setIdAccount(expectedId);
+        assertEquals(expectedId, accountHolder.getIdAccount());
     }
 
     @Test
@@ -38,6 +39,6 @@ class AccountHolderTest {
     void shouldCreateAccountHolderWithId() {
         Long expectedId = 1L;
         AccountHolder newAccountHolder = new AccountHolder(expectedId);
-        assertEquals(expectedId, newAccountHolder.getIdAccountHolder());
+        assertEquals(expectedId, newAccountHolder.getIdAccount());
     }
 }

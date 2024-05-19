@@ -1,20 +1,24 @@
 package br.com.felipemira.transfer.application.domain.model;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 // Responsavel por representar a entidade correntista e suas regras.
 // Nao sera gerenciado pelo IoC e sim pelo repositorio.
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@Builder(setterPrefix = "with")
-public class AccountHolder {
-    @Getter@Setter
-    private Long idAccountHolder;
-    @Getter@Setter
-    private String name;
+@AllArgsConstructor
+@Data
+@SuperBuilder(setterPrefix = "with")
+@EqualsAndHashCode(callSuper=true)
+public class AccountHolder extends AbstractAccountMain {
+	private String registry;
 
-    public AccountHolder(Long idAccountHolder){
-        this.idAccountHolder = idAccountHolder;
-    }
+	public AccountHolder(Long idAccountHolder){
+		setIdAccount(idAccountHolder);
+	}
+
+	public AccountHolder(Long idAccountHolder, String name){
+		setIdAccount(idAccountHolder);
+		setName(name);
+	}
 }

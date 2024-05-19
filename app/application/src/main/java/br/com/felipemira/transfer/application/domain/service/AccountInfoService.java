@@ -35,13 +35,13 @@ public class AccountInfoService implements AccountInfoUseCase {
 
         account.checkActiveAccount();
 
-        var accountHolder = registerPort.getAccountHolder(account.getAccountHolder().getIdAccountHolder());
+        var accountHolder = registerPort.getAccountHolder(account.getAccountMain().getIdAccount());
 
         if(isNull(accountHolder)){
-            accountHolderNonexistent(account.getAccountHolder().getIdAccountHolder());
+            accountHolderNonexistent(account.getAccountMain().getIdAccount());
         }
 
-        account.setAccountHolder(accountHolder);
+        account.setAccountMain(accountHolder);
 
         return account;
     }

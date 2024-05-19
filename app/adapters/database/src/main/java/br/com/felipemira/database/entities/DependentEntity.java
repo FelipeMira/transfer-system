@@ -1,6 +1,5 @@
 package br.com.felipemira.database.entities;
 
-
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -8,6 +7,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder(setterPrefix = "with")
 @EqualsAndHashCode(callSuper = true)
-public class HolderEntity extends AbstractMainEntity {
-	private String registry;
+public class DependentEntity extends AbstractMainEntity {
+	private String familyMemberType;
 }

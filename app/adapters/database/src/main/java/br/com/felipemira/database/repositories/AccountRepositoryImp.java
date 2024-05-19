@@ -50,8 +50,8 @@ public class AccountRepositoryImp implements AccountPort {
             throw new BusinessException("Conta e obrigatorio.");
         }
         try {
-			final var accountEntity = withMapStruct.toEntity(conta);
-			accountCrudRepository.saveAndFlush(accountEntity);
+//			final var accountEntity = withMapStruct.toEntity(conta);
+			accountCrudRepository.saveAndFlush(null);
         } catch (Exception e) {
             e.printStackTrace();
             throw new BusinessException(ERROR);

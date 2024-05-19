@@ -24,7 +24,7 @@ public class Account {
     @Getter@Setter
     private BigDecimal balance;
     @Getter@Setter
-    private AccountHolder accountHolder;
+    private AbstractAccountMain accountMain;
     @Getter@Setter
     private Integer active;
     @Getter@Setter
@@ -35,7 +35,7 @@ public class Account {
     public Account() {
         number = 0L;
         balance = BigDecimal.ZERO;
-        accountHolder = new AccountHolder();
+        accountMain = new AccountHolder();
         date = LocalDate.now();
         dailyLimit = new BigDecimal(1000);
     }

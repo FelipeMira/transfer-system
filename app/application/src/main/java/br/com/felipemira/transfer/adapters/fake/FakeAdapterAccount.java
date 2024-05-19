@@ -1,5 +1,6 @@
 package br.com.felipemira.transfer.adapters.fake;
 
+import br.com.felipemira.transfer.application.domain.model.AbstractAccountMain;
 import br.com.felipemira.transfer.common.FakePort;
 import br.com.felipemira.transfer.application.domain.model.Account;
 import br.com.felipemira.transfer.application.domain.model.AccountHolder;

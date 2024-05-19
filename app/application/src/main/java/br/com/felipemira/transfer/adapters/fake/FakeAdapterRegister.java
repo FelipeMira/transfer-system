@@ -22,7 +22,7 @@ public class FakeAdapterRegister implements RegisterPort {
     }
 
     private void addAccountHolder(AccountHolder accountHolder) {
-        registers.put(accountHolder.getIdAccountHolder(), accountHolder);
+        registers.put(accountHolder.getIdAccount(), accountHolder);
     }
 
     @Override
