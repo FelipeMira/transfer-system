@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group = 'br.com.felipemira'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':application')
+    implementation project(':common')
+    implementation project(':adapters:database')
+
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: "${rootProject.ext.openApiVersion}"
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign:${rootProject.ext.openfeignVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${rootProject.ext.springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${rootProject.ext.springBootVersion}"
+    implementation "org.apache.commons:commons-collections4:${rootProject.ext.commonsCollectionsVersion}"
+    implementation "org.modelmapper:modelmapper:${rootProject.ext.modelMapperVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-redis:${rootProject.ext.redisVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-amqp:${rootProject.ext.amqpVersion}"
+    implementation "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    testImplementation "org.junit.jupiter:junit-jupiter:${rootProject.ext.junitVersion}"
+    testImplementation "org.junit.platform:junit-platform-commons:${rootProject.ext.junitSuiteVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite-engine:${rootProject.ext.junitSuiteVersion}"
+    testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoVersion}"
+    testImplementation("org.springframework:spring-test:${rootProject.ext.springFrameworkVersion}") {
+        exclude group: 'junit', module: 'org.junit.vintage'
+    }
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${rootProject.ext.springBootVersion}") {
+        exclude group: 'jakarta.xml.bind', module: 'jakarta.xml.bind-api'
+        exclude group: 'org.skyscreamer', module: 'jsonassert'
+    }
+
+    compileOnly "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${rootProject.ext.jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${rootProject.ext.jacksonVersion}"
+}

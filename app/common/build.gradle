@@ -8,6 +8,8 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
     api 'com.google.code.gson:gson:2.8.6'
 
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${rootProject.ext.jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${rootProject.ext.jacksonVersion}"
 
     testImplementation platform("org.junit:junit-bom:${rootProject.ext.junitVersion}")
     testImplementation 'org.junit.jupiter:junit-jupiter'

@@ -1,8 +1,8 @@
 package br.com.felipemira.adapters.database.test.integracao;
 
-import br.com.felipemira.transfer.application.domain.model.AccountHolder;
-import br.com.felipemira.transfer.application.exceptions.BusinessException;
-import br.com.felipemira.transfer.application.ports.out.AccountPort;
+import br.com.felipemira.application.core.domain.model.AccountHolder;
+import br.com.felipemira.application.core.exceptions.BusinessException;
+import br.com.felipemira.application.core.ports.out.AccountPort;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

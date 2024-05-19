@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = {"br.com.felipemira.database.interfaces"})
 @ComponentScan({
         // core do sistema
-        "br.com.felipemira.transfer.application",
+        "br.com.felipemira.application.core",
         // adptadores reais
         "br.com.felipemira.database.repositories", "br.com.felipemira.database.entities"})
 public class DatabaseConfig {

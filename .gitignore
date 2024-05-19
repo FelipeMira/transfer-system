@@ -1,4 +1,3 @@
 /.idea/
 /infra/docker-transfer/data/
 /infra/docker-transfer/apisMock/api-bacen/.idea/
-/infra/docker-transfer/apisMock/api-cadastro/.idea/
