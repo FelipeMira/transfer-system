@@ -2,14 +2,20 @@ plugins {
     id 'java'
 }
 
-group = 'br.com.felipemira'
+group = 'br.com.felipemira.transfer'
 version = 'unspecified'
 
 repositories {
     mavenCentral()
 }
 
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // ------------------------------------------------------
+    //Map struct
+    implementation "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+    // ------------------------------------------------------
 }

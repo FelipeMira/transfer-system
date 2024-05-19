@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.Builder;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder(setterPrefix = "with")
 @Setter
 @ToString
 public class AccountEntity implements Serializable {

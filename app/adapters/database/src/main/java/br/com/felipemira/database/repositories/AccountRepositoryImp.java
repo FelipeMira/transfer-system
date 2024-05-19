@@ -2,7 +2,7 @@ package br.com.felipemira.database.repositories;
 
 import br.com.felipemira.database.entities.AccountEntity;
 import br.com.felipemira.database.interfaces.AccountCrudRepository;
-import br.com.felipemira.database.map.GenericConvert;
+import br.com.felipemira.database.map.AccountMapper;
 import br.com.felipemira.transfer.application.domain.model.Account;
 import br.com.felipemira.transfer.application.exceptions.BusinessException;
 import br.com.felipemira.transfer.application.ports.out.AccountPort;
@@ -18,9 +18,10 @@ import static java.util.Objects.isNull;
 @Named
 public class AccountRepositoryImp implements AccountPort {
 
-    private static final String ERROR = "Erro inesperado de acesso ao banco. Entre em contato com adminstrador.";
+	private static final String ERROR = "Erro inesperado de acesso ao banco. Entre em contato com adminstrador.";
 
-    private final AccountCrudRepository accountCrudRepository;
+	private final AccountCrudRepository accountCrudRepository;
+	private final AccountMapper withMapStruct = AccountMapper.INSTANCE;
 
 
     @Inject
@@ -35,7 +36,7 @@ public class AccountRepositoryImp implements AccountPort {
         try{
             Optional<AccountEntity> optionalContaEntity = accountCrudRepository.findById(Math.toIntExact(numero));
 
-            return GenericConvert.convertModelMapper(optionalContaEntity.isEmpty()? null : optionalContaEntity.get(), Account.class);
+			return withMapStruct.toDomain(optionalContaEntity.isEmpty() ? optionalContaEntity.get() : null);
         } catch (Exception e) {
             e.printStackTrace();
             throw new BusinessException(ERROR);
@@ -49,7 +50,8 @@ public class AccountRepositoryImp implements AccountPort {
             throw new BusinessException("Conta e obrigatorio.");
         }
         try {
-            accountCrudRepository.saveAndFlush(GenericConvert.convertModelMapper(conta, AccountEntity.class));
+			final var accountEntity = withMapStruct.toEntity(conta);
+			accountCrudRepository.saveAndFlush(accountEntity);
         } catch (Exception e) {
             e.printStackTrace();
             throw new BusinessException(ERROR);

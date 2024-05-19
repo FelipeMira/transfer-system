@@ -14,6 +14,7 @@ import static java.util.Objects.isNull;
 // Nao sera gerenciado pelo IoC e sim pelo repositorio.
 @AllArgsConstructor
 @ToString
+@Builder(setterPrefix = "with")
 public class Account {
 
     @NotNull(message = "deve ser informado")

@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder(setterPrefix = "with")
 public class AccountHolder {
     @Getter@Setter
     private Long idAccountHolder;

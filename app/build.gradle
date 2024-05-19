@@ -4,7 +4,7 @@ plugins {
 }
 
 ext {
-    lombokVersion = '1.18.22'
+    lombokVersion = '1.18.32'
     springFrameworkVersion = '5.3.13'
     springBootVersion = '3.1.0'
     springBootStarterValidationVersion = '3.1.0'
@@ -36,6 +36,7 @@ ext {
     amqpVersion = '2.3.12'
     gsonVersion = '2.8.9'
     mockitoVersion = '4.1.0'
+    mapStructVersion = '1.5.5.Final'
 }
 
 
@@ -62,8 +63,14 @@ subprojects {
     }
 
     dependencies {
-        compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+        testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+
 
         implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: "${rootProject.ext.jakartaValidationVersion}"
         implementation group: 'jakarta.inject', name: 'jakarta.inject-api', version: "${rootProject.ext.jakartaInjectVersion}"
