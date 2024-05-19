@@ -1,13 +1,14 @@
 package br.com.felipemira.database.entities;
 
 
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @NoArgsConstructor
-@Data
+@Getter
 @SuperBuilder(setterPrefix = "with")
-@EqualsAndHashCode(callSuper = true)
 public class HolderEntity extends AbstractMainEntity {
 	private String registry;
 }

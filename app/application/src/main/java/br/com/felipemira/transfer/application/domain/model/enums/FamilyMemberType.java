@@ -1,9 +1,13 @@
 package br.com.felipemira.transfer.application.domain.model.enums;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.MissingFormatArgumentException;
+import java.util.Objects;
+import java.util.stream.Stream;
 
+@Getter
 @AllArgsConstructor
 public enum FamilyMemberType {
 
@@ -12,7 +16,7 @@ public enum FamilyMemberType {
 
 	private final String description;
 
-	public FamilyMemberType fromDescription(String description) {
+	public static FamilyMemberType fromDescription(String description) {
 		for (FamilyMemberType familyMemberType : values()) {
 			if (description.equalsIgnoreCase(familyMemberType.name())) {
 				return familyMemberType;

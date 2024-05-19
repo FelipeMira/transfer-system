@@ -6,6 +6,8 @@ import br.com.felipemira.database.entities.HolderEntity;
 import br.com.felipemira.transfer.application.domain.model.AbstractAccountMain;
 import br.com.felipemira.transfer.application.domain.model.AccountDependent;
 import br.com.felipemira.transfer.application.domain.model.AccountHolder;
+import br.com.felipemira.transfer.application.domain.model.enums.FamilyMemberType;
+import jakarta.validation.constraints.NotNull;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.SubclassMapping;
@@ -24,4 +26,12 @@ public interface AccountHolderMapper {
 
 	@InheritInverseConfiguration
 	AbstractMainEntity toEntity(AbstractAccountMain accountMain);
+
+	default String getFamilyMemberTypeString(FamilyMemberType familyMemberType) {
+		return familyMemberType.getDescription();
+	}
+
+	default FamilyMemberType getFamilyMemberTypeString(String familyMemberType) {
+		return FamilyMemberType.fromDescription(familyMemberType);
+	}
 }

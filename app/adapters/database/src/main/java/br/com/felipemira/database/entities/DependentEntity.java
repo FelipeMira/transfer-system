@@ -1,12 +1,12 @@
 package br.com.felipemira.database.entities;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @NoArgsConstructor
-@Data
+@Getter
 @SuperBuilder(setterPrefix = "with")
-@EqualsAndHashCode(callSuper = true)
 public class DependentEntity extends AbstractMainEntity {
 	private String familyMemberType;
 }
