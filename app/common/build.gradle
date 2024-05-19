@@ -4,8 +4,6 @@ plugins {
 }
 
 dependencies {
-    api "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
     api 'com.google.code.gson:gson:2.8.6'
 
 

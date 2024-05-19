@@ -8,6 +8,4 @@ dependencies {
 
     implementation group: 'jakarta.inject', name: 'jakarta.inject-api', version: "${rootProject.ext.jakartaInjectVersion}"
 
-    compileOnly "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
 }
