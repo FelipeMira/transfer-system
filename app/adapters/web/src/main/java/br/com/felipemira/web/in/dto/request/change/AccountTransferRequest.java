@@ -1,4 +1,4 @@
-package br.com.felipemira.web.in.domain.request.change;
+package br.com.felipemira.web.in.dto.request.change;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

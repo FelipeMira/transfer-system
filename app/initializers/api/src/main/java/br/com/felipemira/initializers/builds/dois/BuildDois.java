@@ -1,4 +1,4 @@
-package br.com.felipemira.builds.dois;
+package br.com.felipemira.initializers.builds.dois;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;

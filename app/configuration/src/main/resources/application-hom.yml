@@ -27,4 +27,4 @@ spring:
 
 
 
-build: "conta.builds.tresquatro.BuildTresEQuatro"
+build: "br.com.felipemira.initializers.builds.tresQuatro.BuildTresQuatro"

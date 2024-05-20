@@ -1,4 +1,4 @@
-package br.com.felipemira.builds.tres;
+package br.com.felipemira.initializers.builds.tresQuatro;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
@@ -15,6 +15,6 @@ import org.springframework.context.annotation.Configuration;
         // adptadores reais
         "br.com.felipemira.database",
         "br.com.felipemira.application.core"})
-public class BuildTres {
+public class BuildTresQuatro {
 
 }

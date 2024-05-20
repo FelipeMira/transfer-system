@@ -1,4 +1,4 @@
-package br.com.felipemira.web.in.domain.config;
+package br.com.felipemira.web.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

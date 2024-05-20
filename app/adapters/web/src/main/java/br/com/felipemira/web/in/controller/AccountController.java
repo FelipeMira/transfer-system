@@ -1,7 +1,7 @@
 package br.com.felipemira.web.in.controller;
 
 import br.com.felipemira.common.domain.pagination.AppPageable;
-import br.com.felipemira.web.in.domain.response.AccountResponse;
+import br.com.felipemira.web.in.dto.response.AccountResponse;
 import br.com.felipemira.web.in.definition.AccountDefinition;
 import br.com.felipemira.web.util.AppConstantes;
 import br.com.felipemira.web.util.GenericConvert;
@@ -16,9 +16,6 @@ import org.springframework.boot.json.JsonParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.management.BadAttributeValueExpException;
-import java.io.IOException;
 
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;

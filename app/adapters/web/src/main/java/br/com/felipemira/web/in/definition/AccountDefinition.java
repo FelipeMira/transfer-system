@@ -1,7 +1,7 @@
 package br.com.felipemira.web.in.definition;
 
 import br.com.felipemira.web.exception.domain.CustomException;
-import br.com.felipemira.web.in.domain.response.AccountResponse;
+import br.com.felipemira.web.in.dto.response.AccountResponse;
 import br.com.felipemira.common.domain.pagination.AppPage;
 import br.com.felipemira.web.util.AppConstantes;
 import io.swagger.v3.oas.annotations.Operation;

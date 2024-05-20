@@ -1,4 +1,4 @@
-package br.com.felipemira.web;
+package br.com.felipemira.initializers.api;
 
 import br.com.felipemira.common.util.PropertiesUtils;
 import org.springframework.boot.WebApplicationType;

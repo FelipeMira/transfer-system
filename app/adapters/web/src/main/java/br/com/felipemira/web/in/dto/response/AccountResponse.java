@@ -1,4 +1,4 @@
-package br.com.felipemira.web.in.domain.response;
+package br.com.felipemira.web.in.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

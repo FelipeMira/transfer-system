@@ -89,21 +89,6 @@ subprojects {
         testImplementation group: 'org.hibernate.validator', name:'hibernate-validator', version: "${rootProject.ext.hibernateValidationVersion}"
     }
 
-    sourceSets {
-        main {
-            resources {
-                srcDirs = ['../configuration/src/main/resources',
-                           '../../configuration/src/main/resources']
-            }
-        }
-        test {
-            resources {
-                srcDirs = ['../configuration/src/test/resources',
-                '../../configuration/src/test/resources']
-            }
-        }
-    }
-
     processResources {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
         from '../configuration/src/main/resources'
