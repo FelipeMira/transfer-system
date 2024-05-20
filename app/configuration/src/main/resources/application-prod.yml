@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: sa
+    password: Asd01020304
+    jdbcUrl: jdbc:sqlserver://localhost:1433;databaseName=hexagonalTransferenciaProd;encrypt=false
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+build: "conta.builds.tresquatro.BuildTresEQuatro"
