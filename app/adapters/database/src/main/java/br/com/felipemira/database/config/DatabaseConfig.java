@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         // core do sistema
         "br.com.felipemira.application.core",
         // adptadores reais
-        "br.com.felipemira.database.repositories", "br.com.felipemira.database.entities"})
+        "br.com.felipemira.database.out.repositories", "br.com.felipemira.database.entities"})
 public class DatabaseConfig {
 
     // Acionados pro profile do Spring

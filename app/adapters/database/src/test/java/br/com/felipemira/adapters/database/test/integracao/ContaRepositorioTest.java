@@ -66,7 +66,7 @@ public class ContaRepositorioTest {
             rep.updateAccount(null);
             fail("Nao deve alterar conta nula");
         } catch (BusinessException e) {
-            assertEquals(e.getMessage(), "Conta e obrigatorio.");
+            assertEquals("Conta e obrigatorio.", e.getMessage());
             System.out.println(e.getMessage());
         }
     }

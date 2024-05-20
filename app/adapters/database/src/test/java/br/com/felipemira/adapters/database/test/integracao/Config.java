@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"br.com.felipemira.database.interfaces"})
-@ComponentScan({"br.com.felipemira.database.repositories", "br.com.felipemira.database.entities"})
+@ComponentScan({"br.com.felipemira.database.out.repositories", "br.com.felipemira.database.entities"})
 public class Config {
 
     @Primary

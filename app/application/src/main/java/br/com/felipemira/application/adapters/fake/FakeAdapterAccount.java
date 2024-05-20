@@ -4,9 +4,14 @@ import br.com.felipemira.common.annotations.FakePort;
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.domain.model.AccountHolder;
 import br.com.felipemira.application.core.ports.out.AccountPort;
+import br.com.felipemira.common.domain.pagination.AppPage;
+import br.com.felipemira.common.domain.pagination.AppPageable;
+import br.com.felipemira.common.util.pagination.PaginationUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.util.Objects.isNull;
@@ -47,5 +52,11 @@ public class FakeAdapterAccount implements AccountPort {
         if (!isNull(ct)) {
             accounts.put(account.getNumber(), account);
         }
+    }
+
+    @Override
+    public AppPage<Account> fetchAccounts(AppPageable appPageable) {
+        List<Account> accountList = new ArrayList<>(accounts.values());
+        return PaginationUtils.paginate(accountList, appPageable);
     }
 }
