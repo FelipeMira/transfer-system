@@ -6,11 +6,10 @@ import br.com.felipemira.common.annotations.UseCase;
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.ports.in.AccountInfoUseCase;
 import br.com.felipemira.common.domain.pagination.AppPage;
-import br.com.felipemira.common.domain.pagination.AppPageable;
 import jakarta.inject.Inject;
 
-import static br.com.felipemira.application.core.exceptions.Error.*;
-import static br.com.felipemira.application.core.exceptions.Error.accountHolderNonexistent;
+import static br.com.felipemira.application.core.exceptions.MessagesException.*;
+import static br.com.felipemira.application.core.exceptions.MessagesException.accountHolderNonexistent;
 import static java.util.Objects.isNull;
 
 @UseCase

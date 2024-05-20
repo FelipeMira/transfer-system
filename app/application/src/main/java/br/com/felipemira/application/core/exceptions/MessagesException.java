@@ -3,7 +3,7 @@ package br.com.felipemira.application.core.exceptions;
 import java.math.BigDecimal;
 
 // Responsavel por centralizar todas as mensagens de validacoes.
-public class Error {
+public class MessagesException {
     // erros genericos
     public static void mandatory(String value) {
         throw new BusinessException(value + " e obrigatorio.");
@@ -36,6 +36,6 @@ public class Error {
     }
 
     public static void aboveDailyLimit(BigDecimal limit) {
-        throw new BusinessException("Transacao acima do limite diario restante: R$" + limit + " .");
+        throw new BusinessException("Transacao acima do limite diario restante: R$" + limit);
     }
 }

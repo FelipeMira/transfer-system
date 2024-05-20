@@ -1,6 +1,6 @@
 package br.com.felipemira.web.in.definition;
 
-import br.com.felipemira.web.exception.domain.ErroInfo;
+import br.com.felipemira.web.exception.domain.CustomException;
 import br.com.felipemira.web.in.domain.response.AccountResponse;
 import br.com.felipemira.common.domain.pagination.AppPage;
 import br.com.felipemira.web.util.AppConstantes;
@@ -32,10 +32,10 @@ public interface AccountDefinition {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_200 , description = AppConstantes.DESCRIPTION_CONTA_200, content = @Content(schema = @Schema(implementation = AccountResponse.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_422, description = AppConstantes.DESCRIPTION_422, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = ErroInfo.class)))
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_422, description = AppConstantes.DESCRIPTION_422, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = CustomException.class)))
     })
     @ResponseBody
     ResponseEntity<?> findAccount(@Parameter(description="Id da conta", required=true) @PathVariable Integer id)
@@ -48,9 +48,9 @@ public interface AccountDefinition {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_200, description = AppConstantes.DESCRIPTION_CONTA_200, content = @Content(schema = @Schema(implementation = AccountResponse.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = ErroInfo.class)))
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = CustomException.class)))
     })
     ResponseEntity<AppPage<AccountResponse>> fetchAccounts(
             @Parameter(description = "Page number", example = "0") @RequestParam int page,
