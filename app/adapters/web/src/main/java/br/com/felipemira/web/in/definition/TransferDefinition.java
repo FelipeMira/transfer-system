@@ -1,7 +1,7 @@
 package br.com.felipemira.web.in.definition;
 
-import br.com.felipemira.web.exception.domain.ErroInfo;
-import br.com.felipemira.web.in.domain.request.change.AccountTransferRequest;
+import br.com.felipemira.web.exception.domain.CustomException;
+import br.com.felipemira.web.in.dto.request.change.AccountTransferRequest;
 import br.com.felipemira.web.util.AppConstantes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 
-import static br.com.felipemira.web.exception.GlobalExceptionHandler.*;
-
 @SuppressWarnings("unused")
 @Tag(name = "Transferencias", description = "Realizar Transferencias")
 public interface TransferDefinition {
@@ -32,10 +30,10 @@ public interface TransferDefinition {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_200, description = AppConstantes.DESCRIPTION_TRANSFERENCIA_200, content = @Content(schema = @Schema(implementation = String.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_422, description = AppConstantes.DESCRIPTION_422, content = @Content(schema = @Schema(implementation = ErroInfo.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = ErroInfo.class)))
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_422, description = AppConstantes.DESCRIPTION_422, content = @Content(schema = @Schema(implementation = CustomException.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = CustomException.class)))
     })
     @ResponseBody
     String transfer(@Parameter(description="Id da conta de debito", required=true) @PathVariable Integer idDebit,

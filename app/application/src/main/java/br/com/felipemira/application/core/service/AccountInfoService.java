@@ -2,18 +2,17 @@ package br.com.felipemira.application.core.service;
 
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.application.core.ports.out.RegisterPort;
-import br.com.felipemira.common.annotations.UseCase;
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.ports.in.AccountInfoUseCase;
 import br.com.felipemira.common.domain.pagination.AppPage;
-import br.com.felipemira.common.domain.pagination.AppPageable;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
-import static br.com.felipemira.application.core.exceptions.Error.*;
-import static br.com.felipemira.application.core.exceptions.Error.accountHolderNonexistent;
+import static br.com.felipemira.application.core.exceptions.MessagesException.*;
+import static br.com.felipemira.application.core.exceptions.MessagesException.accountHolderNonexistent;
 import static java.util.Objects.isNull;
 
-@UseCase
+@Named
 public class AccountInfoService implements AccountInfoUseCase {
 
     private final AccountPort accountPort;

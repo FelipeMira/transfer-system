@@ -2,17 +2,17 @@ package br.com.felipemira.application.core.service;
 
 import br.com.felipemira.application.core.domain.model.TransactionBacen;
 import br.com.felipemira.application.core.domain.model.Transfer;
-import br.com.felipemira.application.core.exceptions.Error;
+import br.com.felipemira.application.core.exceptions.MessagesException;
 import br.com.felipemira.application.core.ports.in.TransferUseCase;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.application.core.ports.out.BacenPort;
 import br.com.felipemira.application.core.ports.out.RegisterPort;
-import br.com.felipemira.common.annotations.UseCase;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import static java.util.Objects.isNull;
 
-@UseCase
+@Named
 public class TransferService implements TransferUseCase {
 
     private final AccountPort accountPort;
@@ -36,13 +36,13 @@ public class TransferService implements TransferUseCase {
         var debit = accountPort.getAccount(transferCommand.transfer().getDebit().getNumber());
 
         if(debit.getActive() == 0){
-            Error.inactive(debit.getNumber());
+            MessagesException.inactive(debit.getNumber());
         }
 
         var debitAccountHolder = registerPort.getAccountHolder(debit.getAccountHolder().getIdAccountHolder());
 
         if(isNull(debitAccountHolder)){
-            Error.accountHolderNonexistent(debit.getAccountHolder().getIdAccountHolder());
+            MessagesException.accountHolderNonexistent(debit.getAccountHolder().getIdAccountHolder());
         }
 
         debit.setAccountHolder(debitAccountHolder);
@@ -50,13 +50,13 @@ public class TransferService implements TransferUseCase {
         var credit = accountPort.getAccount(transferCommand.transfer().getCredit().getNumber());
 
         if(credit.getActive() == 0){
-            Error.inactive(credit.getNumber());
+            MessagesException.inactive(credit.getNumber());
         }
 
         var creditAccountHolder = registerPort.getAccountHolder(credit.getAccountHolder().getIdAccountHolder());
 
         if(isNull(creditAccountHolder)){
-            Error.accountHolderNonexistent(credit.getAccountHolder().getIdAccountHolder());
+            MessagesException.accountHolderNonexistent(credit.getAccountHolder().getIdAccountHolder());
         }
 
         credit.setAccountHolder(creditAccountHolder);

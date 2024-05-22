@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'br.com.felipemira'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':common')
+    implementation project(':adapters:web')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign:${rootProject.ext.openfeignVersion}"
+    compileOnly "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+}
+
+bootJar {
+    archiveBaseName.set(rootProject.name)
+    archiveVersion.set('1.0.0')
+    mainClass.set('br.com.felipemira.initializers.api.ApiApplication')
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = rootProject.name
+            artifact bootJar
+        }
+    }
+}
+
+build.dependsOn bootJar
+build.dependsOn publishToMavenLocal

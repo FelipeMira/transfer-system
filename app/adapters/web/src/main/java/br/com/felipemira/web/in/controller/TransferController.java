@@ -1,6 +1,6 @@
 package br.com.felipemira.web.in.controller;
 
-import br.com.felipemira.web.in.domain.request.change.AccountTransferRequest;
+import br.com.felipemira.web.in.dto.request.change.AccountTransferRequest;
 import br.com.felipemira.web.in.definition.TransferDefinition;
 import br.com.felipemira.web.util.AppConstantes;
 import br.com.felipemira.application.core.domain.model.Account;

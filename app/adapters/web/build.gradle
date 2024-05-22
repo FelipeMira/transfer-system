@@ -17,7 +17,6 @@ dependencies {
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: "${rootProject.ext.openApiVersion}"
     implementation "org.springframework.cloud:spring-cloud-starter-openfeign:${rootProject.ext.openfeignVersion}"
     implementation "org.springframework.boot:spring-boot-starter-web:${rootProject.ext.springBootVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-web:${rootProject.ext.springBootVersion}"
     implementation "org.apache.commons:commons-collections4:${rootProject.ext.commonsCollectionsVersion}"
     implementation "org.modelmapper:modelmapper:${rootProject.ext.modelMapperVersion}"
     implementation "org.springframework.boot:spring-boot-starter-data-redis:${rootProject.ext.redisVersion}"
@@ -28,7 +27,7 @@ dependencies {
     testImplementation "org.junit.platform:junit-platform-commons:${rootProject.ext.junitSuiteVersion}"
     testImplementation "org.junit.platform:junit-platform-suite-engine:${rootProject.ext.junitSuiteVersion}"
     testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoVersion}"
-    testImplementation("org.springframework:spring-test:${rootProject.ext.springFrameworkVersion}") {
+    testImplementation("org.springframework:spring-test") {
         exclude group: 'junit', module: 'org.junit.vintage'
     }
     testImplementation("org.springframework.boot:spring-boot-starter-test:${rootProject.ext.springBootVersion}") {

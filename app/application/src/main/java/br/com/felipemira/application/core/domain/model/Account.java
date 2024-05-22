@@ -1,6 +1,6 @@
 package br.com.felipemira.application.core.domain.model;
 
-import br.com.felipemira.application.core.exceptions.Error;
+import br.com.felipemira.application.core.exceptions.MessagesException;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -45,7 +45,7 @@ public class Account {
 
     public void checkActiveAccount(){
         if(this.getActive() == 0){
-            Error.inactive(this.getNumber());
+            MessagesException.inactive(this.getNumber());
         }
     }
 
@@ -64,26 +64,26 @@ public class Account {
 
     public void creditValue(BigDecimal credito) {
         if (isNull(credito)) {
-            Error.mandatory("Valor credito");
+            MessagesException.mandatory("Valor credito");
         }
         if (credito.compareTo(BigDecimal.ZERO) <= 0) {
-            Error.mandatory("Valor credito");
+            MessagesException.mandatory("Valor credito");
         }
         balance = balance.add(credito);
     }
 
     public void debitValue(BigDecimal debito) {
         if (isNull(debito)) {
-            Error.mandatory("Valor debito");
+            MessagesException.mandatory("Valor debito");
         }
         if(debito.compareTo(dailyLimit) > 0){
-            Error.aboveDailyLimit(dailyLimit);
+            MessagesException.aboveDailyLimit(dailyLimit);
         }
         if (debito.compareTo(BigDecimal.ZERO) <= 0) {
-            Error.mandatory("Valor debito");
+            MessagesException.mandatory("Valor debito");
         }
         if (debito.compareTo(balance) > 0) {
-            Error.insufficientFunds();
+            MessagesException.insufficientFunds();
         }
         balance = balance.subtract(debito);
         dailyLimit = dailyLimit.subtract(debito);

@@ -1,12 +1,12 @@
 package br.com.felipemira.application.adapters.fake;
 
-import br.com.felipemira.common.annotations.FakePort;
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.domain.model.AccountHolder;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.common.domain.pagination.AppPage;
 import br.com.felipemira.common.domain.pagination.AppPageable;
 import br.com.felipemira.common.util.pagination.PaginationUtils;
+import jakarta.inject.Named;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import static java.util.Objects.isNull;
 
 // Responsavel por implementar a porta de saída (driven) de servicos de banco de dados falso.
 // Sera gerenciado pelo IoC
-@FakePort
+@Named
 public class FakeAdapterAccount implements AccountPort {
 
     private final Map<Long, Account> accounts = new HashMap<>();
