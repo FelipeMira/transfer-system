@@ -1,10 +1,10 @@
 package br.com.felipemira.web.in.controller;
 
 import br.com.felipemira.common.domain.pagination.AppPageable;
+import br.com.felipemira.common.mappers.GenericConvert;
 import br.com.felipemira.web.in.dto.response.AccountResponse;
 import br.com.felipemira.web.in.definition.AccountDefinition;
 import br.com.felipemira.web.util.AppConstantes;
-import br.com.felipemira.web.util.GenericConvert;
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.ports.in.AccountInfoUseCase;
 import br.com.felipemira.common.domain.pagination.AppPage;

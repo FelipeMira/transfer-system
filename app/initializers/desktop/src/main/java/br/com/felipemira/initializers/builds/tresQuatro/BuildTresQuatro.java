@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 @ComponentScan({// adptadores front
         "br.com.felipemira.web",
+        "br.com.felipemira.initializers.desktop.javafx",
         // adptadores reais
         "br.com.felipemira.database.config",
         "br.com.felipemira.application.core"})

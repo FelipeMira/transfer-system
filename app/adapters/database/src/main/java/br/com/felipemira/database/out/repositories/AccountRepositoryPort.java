@@ -3,10 +3,10 @@ package br.com.felipemira.database.out.repositories;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.common.domain.pagination.AppPage;
 import br.com.felipemira.common.domain.pagination.AppPageable;
+import br.com.felipemira.common.mappers.GenericConvert;
 import br.com.felipemira.common.util.pagination.PaginationUtils;
 import br.com.felipemira.database.entities.AccountEntity;
 import br.com.felipemira.database.interfaces.AccountCrudRepository;
-import br.com.felipemira.database.out.map.GenericConvert;
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.exceptions.BusinessException;
 import jakarta.inject.Inject;
@@ -14,6 +14,7 @@ import jakarta.inject.Named;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 // Responsavel por implementar a porta de saida (driven) de servicos de banco de dados usando spring jdbc
-@Named
+@Component
 public class AccountRepositoryPort implements AccountPort {
 
     private static final String ERROR = "Erro inesperado de acesso ao banco. Entre em contato com adminstrador.";
