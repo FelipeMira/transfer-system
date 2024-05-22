@@ -26,7 +26,7 @@ public class AdapterJavaFx extends Application {
     @Override
     public void start(Stage stage) {
         var form = spring.getBean(TransferForm.class);
-        form.mostrar(stage);
+        form.show(stage);
     }
 
 }
