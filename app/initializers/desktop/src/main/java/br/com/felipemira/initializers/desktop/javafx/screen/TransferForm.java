@@ -1,4 +1,4 @@
-package br.com.felipemira.initializers.desktop.javafx.tela;
+package br.com.felipemira.initializers.desktop.javafx.screen;
 
 import br.com.felipemira.application.core.domain.model.Account;
 import br.com.felipemira.application.core.domain.model.Transfer;
