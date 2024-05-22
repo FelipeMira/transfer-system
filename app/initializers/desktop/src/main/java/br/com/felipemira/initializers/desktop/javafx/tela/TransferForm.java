@@ -95,7 +95,7 @@ public class TransferForm {
         }
     }
     
-    private FlowPane montarTela() {
+    private FlowPane buildForm() {
         var pn = new FlowPane();
         pn.setHgap(10);
         pn.setVgap(10);
@@ -150,10 +150,10 @@ public class TransferForm {
         return pn;
     }
     
-    public void mostrar(Stage stage) {
+    public void show(Stage stage) {
         this.stage = stage;
         stage.setTitle("Adaptador JavaFX");
-        var scene = new Scene(montarTela(), 500, 100);
+        var scene = new Scene(buildForm(), 500, 100);
         stage.setScene(scene);
         stage.show();
     }
