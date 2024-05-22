@@ -1,15 +1,15 @@
 package br.com.felipemira.application.adapters.fake;
 
 import br.com.felipemira.application.core.ports.out.RegisterPort;
-import br.com.felipemira.common.annotations.FakePort;
 import br.com.felipemira.application.core.domain.model.AccountHolder;
+import jakarta.inject.Named;
 
 import java.util.HashMap;
 import java.util.Map;
 
 // Responsavel por implementar a porta de saída (driven) de servicos de API falso.
 // Sera gerenciado pelo IoC
-@FakePort
+@Named
 public class FakeAdapterRegister implements RegisterPort {
 
     private final Map<Long, AccountHolder> registers = new HashMap<>();

@@ -5,4 +5,6 @@ include ':adapters:database'
 include 'configuration'
 include ':adapters:web'
 include ':initializers:api'
+include 'initializers:desktop'
+findProject(':initializers:desktop')?.name = 'desktop'
 

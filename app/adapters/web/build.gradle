@@ -27,7 +27,7 @@ dependencies {
     testImplementation "org.junit.platform:junit-platform-commons:${rootProject.ext.junitSuiteVersion}"
     testImplementation "org.junit.platform:junit-platform-suite-engine:${rootProject.ext.junitSuiteVersion}"
     testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoVersion}"
-    testImplementation("org.springframework:spring-test:${rootProject.ext.springFrameworkVersion}") {
+    testImplementation("org.springframework:spring-test") {
         exclude group: 'junit', module: 'org.junit.vintage'
     }
     testImplementation("org.springframework.boot:spring-boot-starter-test:${rootProject.ext.springBootVersion}") {

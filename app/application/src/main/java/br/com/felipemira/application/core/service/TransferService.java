@@ -7,12 +7,12 @@ import br.com.felipemira.application.core.ports.in.TransferUseCase;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.application.core.ports.out.BacenPort;
 import br.com.felipemira.application.core.ports.out.RegisterPort;
-import br.com.felipemira.common.annotations.UseCase;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import static java.util.Objects.isNull;
 
-@UseCase
+@Named
 public class TransferService implements TransferUseCase {
 
     private final AccountPort accountPort;

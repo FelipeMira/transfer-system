@@ -34,7 +34,7 @@ ext {
     redisVersion = '3.0.0'
     springBootStarterValidationVersion = '3.1.0'
     springBootVersion = '3.1.0'
-    springFrameworkVersion = '5.3.13'
+    springFrameworkVersion = '6.0.9'
     openApiVersion = '2.0.4'
 }
 
