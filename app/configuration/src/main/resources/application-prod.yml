@@ -3,10 +3,27 @@ spring:
     username: sa
     password: Asd01020304
     jdbcUrl: jdbc:sqlserver://localhost:1433;databaseName=hexagonalTransferenciaProd;encrypt=false
+
   jpa:
     defer-datasource-initialization: false
     hibernate:
       ddl-auto: none
     show-sql: false
 
-build: "conta.builds.tresquatro.BuildTresEQuatro"
+  cloud:
+    openfeign:
+      client:
+        config:
+          cadastro:
+            url: http://localhost:8081/api/cadastros/
+          bacen:
+            url: http://localhost:8082/api/bacen/transferencia/
+
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: UmVkaXMwMTAyMDMwNA==
+    timeout: 60000
+
+build: "br.com.felipemira.initializers.builds.tresQuatro.BuildTresQuatro"

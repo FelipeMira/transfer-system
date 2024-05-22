@@ -1,4 +1,4 @@
-package br.com.felipemira.database.out.map;
+package br.com.felipemira.common.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

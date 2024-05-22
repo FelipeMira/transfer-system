@@ -22,9 +22,11 @@ repositories {
 dependencies {
 
     implementation project(':common')
+    implementation project(':adapters:web')
     implementation project(':application')
 
     implementation 'org.apache.commons:commons-io:1.3.2' // Para leitura de arquivos
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign:${rootProject.ext.openfeignVersion}"
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation platform('software.amazon.awssdk:bom:2.17.52')
