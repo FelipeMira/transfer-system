@@ -13,7 +13,6 @@ public class ApiApplication {
         Class<?> classBuild = Class.forName(build);
 
         new SpringApplicationBuilder()
-                .web(WebApplicationType.SERVLET)
                 .sources(classBuild)
                 .run(args);
     }

@@ -38,11 +38,13 @@ ext {
     openApiVersion = '2.0.4'
 }
 
+group = 'br.com.felipemira'
+version = '0.0.1-SNAPSHOT'
 
 subprojects {
 
-    group = 'br.com.felipemira'
-    version = '0.0.1-SNAPSHOT'
+    group = rootProject.group
+    version = rootProject.version
 
     apply plugin: 'java'
 

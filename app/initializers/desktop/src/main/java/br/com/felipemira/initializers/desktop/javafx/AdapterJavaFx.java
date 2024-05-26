@@ -1,7 +1,7 @@
 package br.com.felipemira.initializers.desktop.javafx;
 
 import br.com.felipemira.common.util.PropertiesUtils;
-import br.com.felipemira.initializers.desktop.javafx.tela.TransferForm;
+import br.com.felipemira.initializers.desktop.javafx.screen.TransferForm;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
