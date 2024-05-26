@@ -1,13 +1,17 @@
 plugins {
-    id 'java'
     id 'java-library'
 }
 
 dependencies {
+    // Project dependencies
     implementation project(':common')
 
+    // Implementation dependencies
     implementation group: 'jakarta.inject', name: 'jakarta.inject-api', version: "${rootProject.ext.jakartaInjectVersion}"
 
+    // Compile Only dependencies
     compileOnly "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+
+    // Annotation Processor dependencies
     annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
 }

@@ -1,5 +1,6 @@
 package br.com.felipemira.application.core.service;
 
+import br.com.felipemira.application.core.domain.model.AccountHolder;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.application.core.ports.out.RegisterPort;
 import br.com.felipemira.application.core.domain.model.Account;
@@ -49,6 +50,16 @@ public class AccountInfoService implements AccountInfoUseCase {
 
     @Override
     public AppPage<Account> fetchAccounts(AccountPageableCommand accountPageableCommand) {
-        return accountPort.fetchAccounts(accountPageableCommand.pageable());
+        AppPage<Account> accountsPage = accountPort.fetchAccounts(accountPageableCommand.pageable());
+
+        // Atualizar cada AccountHolder antes de retornar a lista de contas
+        accountsPage.getContent().forEach(account -> {
+            AccountHolder updatedAccountHolder = registerPort.getAccountHolder(account.getAccountHolder().getIdAccountHolder());
+            if (updatedAccountHolder != null) {
+                account.setAccountHolder(updatedAccountHolder);
+            }
+        });
+
+        return accountsPage;
     }
 }

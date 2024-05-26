@@ -1,26 +1,27 @@
 plugins {
-    id 'java'
     id 'java-library'
-    id 'org.springframework.boot' version '3.1.0'
 }
 
 dependencies {
+    // API dependencies
     api "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
     api 'com.google.code.gson:gson:2.8.6'
 
+    // Implementation dependencies
     implementation "com.fasterxml.jackson.core:jackson-annotations:${rootProject.ext.jacksonVersion}"
     implementation "com.fasterxml.jackson.core:jackson-databind:${rootProject.ext.jacksonVersion}"
-
     implementation "jakarta.enterprise:jakarta.enterprise.cdi-api:${rootProject.ext.jakartaVersion}"
     implementation "org.modelmapper:modelmapper:${rootProject.ext.modelMapperVersion}"
-
-    implementation 'org.springframework:spring-context'
-    implementation 'org.springframework:spring-tx'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation "org.springframework.boot:spring-boot-starter-validation:${rootProject.ext.springBootStarterValidationVersion}"
     implementation "org.springframework.data:spring-data-commons:${rootProject.ext.springBootVersion}"
+    implementation group: 'org.springframework', name: 'spring-context', version: "${rootProject.ext.springFrameworkVersion}"
+    implementation group: 'org.springframework', name: 'spring-tx', version: "${rootProject.ext.springFrameworkVersion}"
 
-    testImplementation platform("org.junit:junit-bom:${rootProject.ext.junitVersion}")
+    // Annotation Processor dependencies
+    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+
+    // Test Implementation dependencies
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation group: 'org.powermock', name: 'powermock-api-mockito2', version: "${rootProject.ext.powerMockVersion}"
+    testImplementation platform("org.junit:junit-bom:${rootProject.ext.junitVersion}")
 }
