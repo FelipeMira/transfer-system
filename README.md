@@ -21,7 +21,7 @@ API de consulta e transferência entre contas com os seguintes requisitos:
 ## Pré Requisitos
 
 - Ter a Openjdk ou JDK 17 devidamente configurada na máquina
-- Ter o Maven devidamente configurado na máquina
+- Ter o Gradle devidamente configurado na máquina
 - Possuir o docker configurado
 
 ---
