@@ -14,10 +14,10 @@ public class AdapterJavaFx extends Application {
 
     @Override
     public void init() throws ClassNotFoundException {
-        String build = (String) PropertiesUtils.loadProperties().get("build");
+        String[] args = getParameters().getRaw().toArray(new String[0]);
+        String build = (String) PropertiesUtils.loadProperties(args).get("build");
         Class<?> classBuild = Class.forName(build);
 
-        String[] args = getParameters().getRaw().toArray(new String[0]);
         this.spring = new SpringApplicationBuilder()
                 .sources(classBuild)
                 .run(args);

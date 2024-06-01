@@ -13,10 +13,18 @@ public class PropertiesUtils {
 
     public static Properties properties;
 
-    public static Properties loadProperties(){
+    public static Properties loadProperties(String[] args){
         if(Objects.isNull(properties)){
             String profile = Objects.isNull(System.getProperties().get("spring.profiles.active"))?
                     null : (String) System.getProperties().get("spring.profiles.active");
+            if(Objects.isNull(properties)){
+                for (String arg : args) {
+                    if (arg.startsWith("--spring.profiles.active=")) {
+                        profile = arg.split("=")[1];
+                        break;
+                    }
+                }
+            }
             try{
                 return loadProperties(profile);
             }catch(Exception ex){
