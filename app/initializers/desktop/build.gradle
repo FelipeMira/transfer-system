@@ -20,6 +20,7 @@ dependencies {
 
     // Test Implementation dependencies
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.testfx:testfx-junit5:4.0.16-alpha'
     testImplementation platform('org.junit:junit-bom:5.9.1')
 }
 
