@@ -14,7 +14,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .components(new Components())
-                .info(new Info().title("Conta Hexagonal Api").description(
+                .info(new Info().title("transfer System Api").description(
                         "API simples para transferencias."));
     }
 }

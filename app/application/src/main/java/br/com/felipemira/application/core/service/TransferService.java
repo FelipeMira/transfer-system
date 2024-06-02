@@ -2,7 +2,6 @@ package br.com.felipemira.application.core.service;
 
 import br.com.felipemira.application.core.domain.model.TransactionBacen;
 import br.com.felipemira.application.core.domain.model.Transfer;
-import br.com.felipemira.application.core.exceptions.MessagesException;
 import br.com.felipemira.application.core.ports.in.TransferUseCase;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.application.core.ports.out.BacenPort;
@@ -10,6 +9,9 @@ import br.com.felipemira.application.core.ports.out.RegisterPort;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+import java.util.Objects;
+
+import static br.com.felipemira.application.core.exceptions.MessagesException.*;
 import static java.util.Objects.isNull;
 
 @Named
@@ -35,28 +37,36 @@ public class TransferService implements TransferUseCase {
         //2. validacao de contas
         var debit = accountPort.getAccount(transferCommand.transfer().getDebit().getNumber());
 
+        if(Objects.isNull(debit)){
+            accountNonexistent(transferCommand.transfer().getDebit().getNumber());
+        }
+
         if(debit.getActive() == 0){
-            MessagesException.inactive(debit.getNumber());
+            inactive(debit.getNumber());
         }
 
         var debitAccountHolder = registerPort.getAccountHolder(debit.getAccountHolder().getIdAccountHolder());
 
         if(isNull(debitAccountHolder)){
-            MessagesException.accountHolderNonexistent(debit.getAccountHolder().getIdAccountHolder());
+            accountHolderNonexistent(debit.getAccountHolder().getIdAccountHolder());
         }
 
         debit.setAccountHolder(debitAccountHolder);
 
         var credit = accountPort.getAccount(transferCommand.transfer().getCredit().getNumber());
 
+        if(Objects.isNull(credit)){
+            accountNonexistent(transferCommand.transfer().getDebit().getNumber());
+        }
+
         if(credit.getActive() == 0){
-            MessagesException.inactive(credit.getNumber());
+            inactive(credit.getNumber());
         }
 
         var creditAccountHolder = registerPort.getAccountHolder(credit.getAccountHolder().getIdAccountHolder());
 
         if(isNull(creditAccountHolder)){
-            MessagesException.accountHolderNonexistent(credit.getAccountHolder().getIdAccountHolder());
+            accountHolderNonexistent(credit.getAccountHolder().getIdAccountHolder());
         }
 
         credit.setAccountHolder(creditAccountHolder);
