@@ -20,7 +20,7 @@ class MessagesExceptionTest {
     @Test
     @DisplayName("Should throw BusinessException when nonexistent field is accessed")
     void shouldThrowBusinessExceptionWhenNonexistentFieldIsAccessed() {
-        assertThrows(BusinessException.class, () -> MessagesException.nonexistent(null));
+        assertThrows(BusinessException.class, () -> MessagesException.accountNonexistent(null));
     }
 
     @Test

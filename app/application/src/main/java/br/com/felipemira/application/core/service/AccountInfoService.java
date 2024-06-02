@@ -1,6 +1,7 @@
 package br.com.felipemira.application.core.service;
 
 import br.com.felipemira.application.core.domain.model.AccountHolder;
+import br.com.felipemira.application.core.exceptions.MessagesException;
 import br.com.felipemira.application.core.ports.out.AccountPort;
 import br.com.felipemira.application.core.ports.out.RegisterPort;
 import br.com.felipemira.application.core.domain.model.Account;
@@ -32,7 +33,7 @@ public class AccountInfoService implements AccountInfoUseCase {
         var account = accountPort.getAccount(accountCommand.account().getNumber());
 
         if(isNull(account)){
-            nonexistent(String.valueOf(accountCommand.account().getNumber()));
+            accountNonexistent(accountCommand.account().getNumber());
         }
 
         account.checkActiveAccount();

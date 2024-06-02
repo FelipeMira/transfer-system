@@ -47,7 +47,7 @@ public class AccountController implements AccountDefinition {
 
     @Override
     @ResponseStatus(OK)
-    @GetMapping
+    @GetMapping(produces= APPLICATION_JSON_VALUE)
     public ResponseEntity<AppPage<AccountResponse>> fetchAccounts(int page, int size) {
         AppPage<Account> accounts = accountInfoUseCase.fetchAccounts(new AccountInfoUseCase.AccountPageableCommand(new AppPageable(page, size)));
         return ResponseEntity.ok(PaginationUtils.convertToAppPage(accounts, account -> GenericConvert.convertModelMapper(account, AccountResponse.class)));

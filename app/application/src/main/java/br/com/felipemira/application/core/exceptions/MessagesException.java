@@ -9,12 +9,9 @@ public class MessagesException {
         throw new BusinessException(value + " e obrigatorio.");
     }
 
-    public static void nonexistent(String value) {
-        throw new BusinessException(value + " e inexistente.");
-    }
-
+    // erros especificos
     public static void accountHolderNonexistent
-            (Long idAccountHolder) {
+    (Long idAccountHolder) {
         throw new BusinessException("O correntista com id " + idAccountHolder + " e inexistente.");
     }
 
@@ -22,7 +19,6 @@ public class MessagesException {
         throw new BusinessException("A conta " + idAccount + " esta inativa.");
     }
 
-    // erros especificos
     public static void insufficientFunds() {
         throw new BusinessException("Saldo insuficiente.");
     }
@@ -37,5 +33,9 @@ public class MessagesException {
 
     public static void aboveDailyLimit(BigDecimal limit) {
         throw new BusinessException("Transacao acima do limite diario restante: R$" + limit);
+    }
+
+    public static void accountNonexistent(Long number) {
+        throw new NotFoundException("Conta " + number + " nao existe.");
     }
 }

@@ -1,6 +1,10 @@
 package br.com.felipemira.web.in.definition;
 
 import br.com.felipemira.web.exception.domain.CustomException;
+import br.com.felipemira.web.exception.domain.errors.BadRequestError;
+import br.com.felipemira.web.exception.domain.errors.InternalServerError;
+import br.com.felipemira.web.exception.domain.errors.NotFoundError;
+import br.com.felipemira.web.exception.domain.errors.UnprocessableEntityError;
 import br.com.felipemira.web.in.dto.request.change.AccountTransferRequest;
 import br.com.felipemira.web.util.AppConstantes;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,10 +34,10 @@ public interface TransferDefinition {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_200, description = AppConstantes.DESCRIPTION_TRANSFERENCIA_200, content = @Content(schema = @Schema(implementation = String.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = CustomException.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = CustomException.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_422, description = AppConstantes.DESCRIPTION_422, content = @Content(schema = @Schema(implementation = CustomException.class))),
-            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = CustomException.class)))
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_400, description = AppConstantes.DESCRIPTION_400, content = @Content(schema = @Schema(implementation = BadRequestError.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_404, description = AppConstantes.DESCRIPTION_404, content = @Content(schema = @Schema(implementation = NotFoundError.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_422, description = AppConstantes.DESCRIPTION_422, content = @Content(schema = @Schema(implementation = UnprocessableEntityError.class))),
+            @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = InternalServerError.class)))
     })
     @ResponseBody
     String transfer(@Parameter(description="Id da conta de debito", required=true) @PathVariable Integer idDebit,

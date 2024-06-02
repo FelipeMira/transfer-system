@@ -8,55 +8,40 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
 
+import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Schema(description = "Resposta de erro da API")
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
-@Getter
-public class CustomException implements Serializable {
 
+@Getter
+public abstract class CustomException implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
-    public CustomException(String message, int statusCode, String statusDescription) {
-        this.timestamp = ZonedDateTime.now();
-        this.messages = Collections.singletonList(new ErrorMessage(null, null, message));
-        this.statusCode = statusCode;
-        this.statusDescription = statusDescription;
-        this.exception = null;
-        this.path = null;
-    }
-
-    @Schema(description = "Data e hora do erro", example = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @Schema(description = "Error Datetime", example = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     @JsonSerialize(using = ZonedDateTimeSerializer.class)
     @JsonDeserialize(using = ZonedDateTimeDeserializer.class)
     public ZonedDateTime timestamp;
 
-    @Schema(description = "Codigo do erro", example = "404")
-    public Integer statusCode;
+    public abstract String getException();
 
-    @Schema(description = "Descricao do status HTTP", example = "Not Found")
-    public String statusDescription;
-
-    @Schema(description = "Excecao lancada", example = "Exception")
-    public String exception;
-
-    @Schema(description = "Lista de mensagens de erro", example = "[ { \"object\": \"Transfer\", \"field\": \"value\", \"message\": \"deve ser maior que zero\" } ] ")
+    @Schema(description = "List of error messages", example = "[ { \"object\": \"Transfer\", \"field\": \"value\", \"message\": \"deve ser maior que zero\" } ] ")
     public List<ErrorMessage> messages;
 
-    @Schema(description = "Path da chamada que ocasionou o erro", example = "\\path")
+    @Schema(description = "Path of the call that caused the error", example = "\\path")
     public String path;
 
 }

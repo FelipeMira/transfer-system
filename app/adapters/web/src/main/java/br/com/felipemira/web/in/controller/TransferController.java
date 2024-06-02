@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(value = AppConstantes.PATH_TRANSFERENCIA)
@@ -30,7 +31,7 @@ public class TransferController implements TransferDefinition {
 
     @Override
     @ResponseStatus(OK)
-    @PostMapping(value = "/{idDebit}/contas/{idCredit}")
+    @PostMapping(produces= APPLICATION_JSON_VALUE, value = "/{idDebit}/contas/{idCredit}")
     public String transfer(@Parameter(description="Id da conta de debito", required=true) @PathVariable Integer idDebit,
                              @Parameter(description="Id da conta de credito", required=true) @PathVariable Integer idCredit,
                              @Parameter(description="Valor da transferencia",
