@@ -13,7 +13,7 @@ public interface AppConstantes {
     String RESPONSE_CODE_500 = "500";
 
     String DESCRIPTION_CONTA_200 = "Conta encontrada";
-    String DESCRIPTION_TRANSFERENCIA_200 = "Transferencia concluida com sucesso";
+    String DESCRIPTION_TRANSFERENCIA_200 = "Transferencia realizada com sucesso";
     String DESCRIPTION_400 = "Requisicao invalida";
     String DESCRIPTION_404 = "Recurso nao encontrado";
     String DESCRIPTION_422 = "Entidade nao processavel";
