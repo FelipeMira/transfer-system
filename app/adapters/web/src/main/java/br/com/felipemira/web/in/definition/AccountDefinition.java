@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Min;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,7 +58,7 @@ public interface AccountDefinition {
             @ApiResponse(responseCode = AppConstantes.RESPONSE_CODE_500, description = AppConstantes.DESCRIPTION_500, content = @Content(schema = @Schema(implementation = InternalServerError.class)))
     })
     ResponseEntity<AppPage<AccountResponse>> fetchAccounts(
-            @Parameter(description = "Page number", example = "0") @RequestParam int page,
-            @Parameter(description = "Page size", example = "3") @RequestParam int size
+            @Parameter(description = "Page number", example = "0") @RequestParam @Min(value = 0, message = "Page number must be equal or greater than 0") int page,
+            @Parameter(description = "Page size", example = "3") @RequestParam @Min(value = 1, message = "Size of records must be equal or greater than 1") int size
     );
 }
